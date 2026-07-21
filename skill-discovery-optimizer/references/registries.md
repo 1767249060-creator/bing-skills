@@ -12,13 +12,19 @@ GitHub 是 Agent Skill 推荐的公开源码载体，不是统一注册表。仓
 
 - Ordinary Git-hosted Agent Skills have no separate submission form.
 - A telemetry-enabled `npx skills add owner/repository` installation initiates automatic listing.
+- The installation must use the remote GitHub source and complete successfully. Local-path installs, `--list`, and telemetry-disabled runs do not register a Skill.
 - Installation telemetry drives listing counts; never fabricate installs.
 - Verify the remote artifact with `scripts/verify_publish.py` and allow a short indexing delay.
+- Skill detail URLs use `https://skills.sh/owner/repository/skill`; `https://skills.sh/owner` is not an owner profile and may return 404.
+- Skills.sh can serve a soft-404 HTML page with HTTP 200. Do not treat status code alone as proof of listing; require detail-page markers or successful CLI/API search.
 
 - 普通 Git 托管 Skill 不需要单独投稿。
 - 启用遥测的 `npx skills add owner/repository` 会触发自动收录。
+- 安装必须使用远程 GitHub 源并成功完成；本地路径安装、`--list` 和关闭遥测的运行不会注册 Skill。
 - 安装遥测会影响安装量；禁止伪造安装。
 - 使用 `scripts/verify_publish.py` 验证远程产物，并允许短暂索引延迟。
+- Skill 详情页格式是 `https://skills.sh/owner/repository/skill`；`https://skills.sh/owner` 不是作者主页，可能返回 404。
+- Skills.sh 可能对软 404 返回 HTTP 200，不能只看状态码；必须检查详情页标记或 CLI/API 搜索结果。
 
 Official references / 官方资料：
 

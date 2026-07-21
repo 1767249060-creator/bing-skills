@@ -85,6 +85,12 @@ class ListingStateTest(unittest.TestCase):
         self.assertEqual(self.state["phase"], "paused")
         self.assertIn("private_floor", self.state["pricing"])
 
+    def test_deleted_has_distinct_phase_and_digest(self):
+        state_api.add_snapshot(self.state, {"status": "已删除"}, self.start)
+        self.assertEqual(self.state["phase"], "deleted")
+        self.assertEqual(state_api.digest_state(self.state, self.start)["conclusion"], "deleted")
+        self.assertIn("private_floor", self.state["pricing"])
+
 
 if __name__ == "__main__":
     unittest.main()

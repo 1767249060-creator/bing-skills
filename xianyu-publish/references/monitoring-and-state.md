@@ -28,6 +28,7 @@ Use OpenCLI structured reads. Use browser DOM only for a missing field or failed
 - `experiment`: one authorized title, keyword, or main-image test.
 - `negotiation_hold`: 48 hours after a user-reported inquiry or opt-in metadata-only conversation event; monitor status but do not change the listing.
 - `paused`: item is unpublished; stop normal reporting but retain local data.
+- `deleted`: item was deleted; stop schedules and retain local state for the user to review or remove. Do not relabel it as paused or sold.
 - `sold`: stop schedules, delete the private floor immediately, retain non-sensitive metrics for 30 days, then purge.
 
 Do not treat `paused/unpublished` as sold. Ask when the platform status is ambiguous. If a hold expires and the item remains active, return to `active`.
@@ -48,4 +49,4 @@ python3 scripts/listing_state.py --state-dir PATH purge
 
 Run `purge` with the daily digest so sold-item metrics expire after 30 days.
 
-For multiple items, keep independent state and experiments but merge normal reporting into one digest. The final business goal is a sale above the private floor; views, wants, collections, and conversations are only process signals.
+For multiple items, keep independent state and experiments but merge normal reporting into one digest. The business goal is a sale above the private floor, but the platform status cannot verify the final transaction price; views, wants, collections, and conversations are only process signals.

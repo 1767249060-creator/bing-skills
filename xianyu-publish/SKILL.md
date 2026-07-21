@@ -69,14 +69,14 @@ Before drafting new copy or making a substantive change to title, positioning, p
 - Never invent function, repair, water, impact, component, usage-count, invoice, warranty, or completeness claims.
 - Associate visible flaws with specific photos. Avoid unnecessary serial-number exposure.
 - Preserve platform remedies for misdescription. Use: `个人闲置，一经售出不提供质保或长期售后；如与描述不符，按平台规则处理。`
-- Keep precise addresses and private floors local and out of conversation unless strictly necessary.
+- Keep precise addresses local. Show the private floor only to the seller when recommending or confirming the protected-price plan; omit it from routine monitoring, buyer-facing copy, and the live listing.
 - On login expiry, verification, risk control, or selector failure: retry once, stop, preserve state, and give one clear user action. Never bypass controls.
 
 ## User-facing output
 
 Keep normal output to one screen:
 
-- recommended asking price, transaction range, private floor, and trial days;
+- recommended asking price, transaction range, private floor (only during seller-side recommendation or confirmation), and trial days;
 - one-sentence rationale;
 - up to five unresolved facts;
 - final title and copy;

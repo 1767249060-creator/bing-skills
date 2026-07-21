@@ -18,7 +18,7 @@ from parse_utils import parse_amount as parse_number
 
 
 SCHEMA_VERSION = 1
-PHASES = ("active", "experiment", "negotiation_hold", "paused", "sold")
+PHASES = ("active", "experiment", "negotiation_hold", "paused", "deleted", "sold")
 
 
 def now_utc() -> datetime:
@@ -173,9 +173,9 @@ def add_snapshot(state: dict, snapshot: dict, at: Optional[datetime] = None) -> 
     if platform_status == "sold":
         mark_sold(state, at)
     elif platform_status in ("paused", "deleted") and state.get("phase") != "sold":
-        state["phase"] = "paused"
+        state["phase"] = platform_status
         state["events"].append({"at": iso(at), "type": platform_status})
-    elif platform_status == "active" and state.get("phase") == "paused":
+    elif platform_status == "active" and state.get("phase") in ("paused", "deleted"):
         state["phase"] = "active"
         state["events"].append({"at": iso(at), "type": "resumed_from_platform"})
     return normalized
@@ -183,8 +183,8 @@ def add_snapshot(state: dict, snapshot: dict, at: Optional[datetime] = None) -> 
 
 def set_inquiry_hold(state: dict, hours: int = 48, at: Optional[datetime] = None) -> None:
     at = at or now_utc()
-    if state.get("phase") == "sold":
-        raise ValueError("cannot hold a sold item")
+    if state.get("phase") in ("sold", "deleted"):
+        raise ValueError(f"cannot hold an item while phase is {state.get('phase')}")
     state["phase"] = "negotiation_hold"
     state["negotiation_hold_until"] = iso(at + timedelta(hours=hours))
     state["events"].append({"at": iso(at), "type": "inquiry", "hold_hours": hours})
@@ -214,7 +214,7 @@ def start_experiment(
     at = at or now_utc()
     if kind not in ("title", "keyword", "main_image"):
         raise ValueError("experiment kind must be title, keyword, or main_image")
-    if state.get("phase") in ("sold", "paused", "negotiation_hold"):
+    if state.get("phase") in ("sold", "paused", "deleted", "negotiation_hold"):
         raise ValueError(f"cannot start experiment while phase is {state.get('phase')}")
     snapshots = state.get("snapshots", [])
     state["phase"] = "experiment"
@@ -250,6 +250,8 @@ def digest_state(state: dict, at: Optional[datetime] = None) -> dict:
     )
     if state.get("phase") == "sold":
         conclusion = "sold"
+    elif state.get("phase") == "deleted":
+        conclusion = "deleted"
     elif state.get("phase") == "paused":
         conclusion = "paused"
     elif current and current.get("platform_status") in ("unknown", "unreadable"):

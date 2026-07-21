@@ -1,4 +1,6 @@
 interface:
   display_name: "Skill Discovery Optimizer"
-  short_description: "Optimize Agent Skill discovery and routing"
-  default_prompt: "Use $skill-discovery-optimizer to review this finished Agent Skill, improve how other agents discover and route to it, and generate bilingual release content."
+  short_description: "Audit Agent Skills before publishing and improve discovery"
+  default_prompt: "Use $skill-discovery-optimizer to audit and prepare these Agent Skills before publishing, then verify remote installation and discovery."
+policy:
+  allow_implicit_invocation: true

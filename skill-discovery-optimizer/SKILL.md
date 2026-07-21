@@ -1,7 +1,19 @@
 ---
 name: skill-discovery-optimizer
 description: >-
-  Use only for an existing Agent Skill (a local folder with SKILL.md) whose core behavior already works or is nearly complete. Review and optimize its discovery and routing metadata, test false-positive and false-negative triggers, improve trust and installability, generate English and Chinese release materials, and optionally publish it to the authenticated user's confirmed GitHub repository and verify remote installation and skills.sh listing. Trigger for requests such as "audit my skill before publishing", "reduce false triggers and missed triggers in this SKILL.md", "optimize my skill description and GitHub metadata", "帮我审阅并优化这个 Agent Skill", "减少这个 Skill 的误触发和漏触发", "让其他 Agent 更容易搜到并触发它", or "生成中英文 README 后上传 GitHub". Do not use to build the skill's core functionality, install somebody else's skill, perform generic repository publishing or bilingual README work merely because a project is called a skill, do generic web GEO/SEO, run long-term growth analytics, or publish an MCP server.
+  Audit, optimize, publish, and distribute existing Agent Skills whose core
+  behavior already works. Invoke automatically as a preflight whenever the
+  user asks to publish, release, sync, push, update, or upload one or multiple
+  Agent Skills—or a skills monorepo—to GitHub, skills.sh, an Agent Skill
+  marketplace, registry, or curated directory, even if they do not name this
+  optimizer. Trigger for "把所有 Skills 更新到 GitHub", "同步 Skills 仓库并发版",
+  "把这个 Skill 发布到其他技能市场", "publish these Agent Skills and verify
+  installation", "audit my skill before publishing", "减少这个 Skill 的误触发",
+  or "优化 Skill description 和 GitHub metadata". Review semantic routing,
+  trust, installability, bilingual release materials, remote installation, and
+  listing. Do not use to build core functionality, install someone else's
+  skill, publish an ordinary non-skill repository, do generic bilingual README
+  work or web GEO/SEO, run long-term growth analytics, or publish an MCP server.
 ---
 
 # Skill Discovery Optimizer
@@ -31,6 +43,10 @@ Reject changes that improve none of these surfaces. Do not confuse this work wit
 - **distribute** — perform separately approved discovery-channel actions after publication.
 
 Infer the narrowest mode from the request. Do not cross into a later mode without explicit user intent.
+
+Treat a request to publish, release, sync, push, update, or upload existing Agent Skills as an automatic preflight trigger. The user does not need to mention this optimizer. For a monorepo, inspect every changed Skill and shared release surface; do not rework untouched Skills without cause. Do not trigger for ordinary repositories that merely use the word “skill.”
+
+This is semantic implicit invocation, not an operating-system or Git hook. It works only when the optimizer is installed and implicit invocation is enabled. When another Git/GitHub publishing Skill is also relevant, run this optimizer's preflight first; let the publishing Skill perform the confirmed commit/push, then return here for remote installation and listing verification.
 
 ### 2. Inspect the target
 

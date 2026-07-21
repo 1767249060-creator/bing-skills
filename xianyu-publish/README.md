@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-A lightweight, local-first workflow that takes a personal idle item from photos to a published [Xianyu (闲鱼 / Goofish)](https://www.goofish.com) listing — then optionally keeps tracking it until it sells above your private floor.
+A lightweight, local-first workflow that takes a personal idle item from photos to a published [Xianyu (闲鱼 / Goofish)](https://www.goofish.com) listing — then optionally tracks its status and engagement until Xianyu reports it sold. Xianyu status does not verify the final transaction price.
 
 You supply the photos and answer a few yes/no questions; the skill handles the rest — comparable-price research, a protected price plan, honest copy, publishing after your confirmation, and line-by-line verification of the live page.
 
@@ -17,8 +17,8 @@ Works with Claude Code, Codex, Cursor, and any agent supported by [`npx skills`]
 ## What it does
 
 1. **Inspect & clarify** — reads your item photos and text, then asks at most five material questions (`yes / no / unknown`).
-2. **Research comparables** — adaptively samples 40–60 genuine personal-seller asking prices via OpenCLI, deduplicating and excluding merchant, recycling, rental, and bait-price listings.
-3. **Protected-price plan** — one recommendation: asking price, expected transaction range, a private floor kept local-only, and a trial window. Never lowers the price automatically.
+2. **Research comparables** — for one personal item, performs bounded research over up to about 200 raw results and retains roughly 40–60 genuine personal-seller asking prices when the market supports it; deduplicates and excludes merchant, recycling, rental, and bait-price listings.
+3. **Protected-price plan** — one recommendation: asking price, expected transaction range, a seller-only private floor shown for confirmation, and a trial window. Never lowers the price automatically.
 4. **Honest copy** — mobile-readable listing following the 人—货—况—证—价—交 structure; owner's voice, no merchant clichés, every flaw tied to a photo.
 5. **Publish on your confirmation & verify** — publishes via OpenCLI or an isolated browser once you approve, then verifies the live page line by line (Xianyu is known to collapse line breaks).
 6. **Optional lightweight tracking** — daily digest of view/want deltas, diagnosis before any price-cut suggestion, and single-variable experiments observed for at least 72 hours.
@@ -26,7 +26,7 @@ Works with Claude Code, Codex, Cursor, and any agent supported by [`npx skills`]
 ## Safety model
 
 - **Dry-run by default** — every live action (publish, edit, price change, unpublish, delete) needs explicit authorization; a price decrease always needs its own confirmation.
-- **Private floor stays local** — stored with mode `0600` under `.xianyu-publish/`, never exposed to buyers or listings, deleted immediately once sold.
+- **Private floor is seller-only** — shown to you when confirming the plan, then stored with mode `0600` under `.xianyu-publish/`; omitted from routine reports, buyers, and listings, and deleted immediately once sold.
 - **No invented claims** — never fabricates function, repair, warranty, or completeness facts; wear is disclosed, not hidden.
 - **No rule circumvention** — stops on login expiry, verification, or risk control and hands the action back to you.
 
@@ -46,7 +46,8 @@ Works with Claude Code, Codex, Cursor, and any agent supported by [`npx skills`]
 - 帮我盯一下我闲鱼链接的浏览量，每天报一次
 
 This skill is for personal selling. It does not handle buying or bidding,
-merchant bulk listings, other marketplaces, bulk scraping, or rule bypasses.
+merchant bulk listings, other marketplaces, dataset-scale scraping, or rule
+bypasses. Bounded comparable research for pricing one personal item is in scope.
 
 ## Real-world example: Fujifilm X-S10 dual-lens kit
 

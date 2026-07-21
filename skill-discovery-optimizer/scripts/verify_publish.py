@@ -32,11 +32,20 @@ def listing_url(source: str, skill: str) -> str | None:
     return f"https://www.skills.sh/{parts[0]}/{parts[1]}/{skill}"
 
 
+def page_is_listing(status: int, final_url: str, body: str) -> bool:
+    """Reject Skills.sh soft-404 pages that incorrectly return HTTP 200."""
+    if status != 200 or "skills.sh" not in final_url:
+        return False
+    markers = ("Installation", "Installs", "Repository", "First Seen")
+    return sum(marker in body for marker in markers) >= 3
+
+
 def url_exists(url: str) -> bool:
     request = urllib.request.Request(url, headers={"User-Agent": "skill-discovery-optimizer/1.0"})
     try:
         with urllib.request.urlopen(request, timeout=15) as response:
-            return response.status == 200 and "skills.sh" in response.geturl()
+            body = response.read().decode("utf-8", errors="replace")
+            return page_is_listing(response.status, response.geturl(), body)
     except (urllib.error.URLError, TimeoutError):
         return False
 
