@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-npx skills add 1767249060-creator/skill-discovery-optimizer --skill skill-discovery-optimizer
+npx skills add Bing-Bryan/skill-discovery-optimizer --skill skill-discovery-optimizer
 ```
 
 支持 [`npx skills`](https://skills.sh) 所兼容的 Agent。

@@ -7,7 +7,7 @@ Review and optimize a finished Agent Skill so other agents can discover, underst
 ## Install
 
 ```bash
-npx skills add 1767249060-creator/skill-discovery-optimizer --skill skill-discovery-optimizer
+npx skills add Bing-Bryan/skill-discovery-optimizer --skill skill-discovery-optimizer
 ```
 
 Works with any agent supported by [`npx skills`](https://skills.sh) — Claude Code, Cursor, Codex, Copilot, Gemini CLI, and more.
