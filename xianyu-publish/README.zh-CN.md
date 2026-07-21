@@ -73,15 +73,15 @@ $xianyu-publish
 
 ### 1. 在售价格调研
 
-![在售价格调研](assets/02-market-research.png)
+![在售价格调研](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/02-market-research.png)
 
 ### 2. 发布前核对
 
-![发布前核对](assets/03-publish-form-filled.png)
+![发布前核对](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/03-publish-form-filled.png)
 
 ### 3. 上线结果
 
-![上线结果](assets/04-live-listing.png)
+![上线结果](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/04-live-listing.png)
 
 ## 目录结构
 
@@ -91,9 +91,7 @@ $xianyu-publish
 | `references/` | 事实清单、定价、文案、监控规范 |
 | `scripts/sample_listings.py` | 自适应比价采集，带 24 小时缓存 |
 | `scripts/listing_state.py` | 本地商品状态机与指标快照 |
-| `tests/` | 离线单元测试（`python3 -m unittest discover -s tests`） |
-| `assets/` | README 使用的案例图片 |
 
 ## 许可证
 
-[MIT](LICENSE)
+[MIT](https://github.com/Bing-Bryan/skills-by-bing/blob/main/LICENSE)

@@ -74,15 +74,15 @@ Market figures are asking prices from personal Xianyu sellers, not completed-sal
 
 ### 1. Asking-price research
 
-![Asking-price research](assets/02-market-research.png)
+![Asking-price research](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/02-market-research.png)
 
 ### 2. Pre-publish verification
 
-![Pre-publish verification](assets/03-publish-form-filled.png)
+![Pre-publish verification](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/03-publish-form-filled.png)
 
 ### 3. Live result
 
-![Live result](assets/04-live-listing.png)
+![Live result](https://raw.githubusercontent.com/Bing-Bryan/skills-by-bing/main/.github/assets/xianyu-publish/04-live-listing.png)
 
 ## Layout
 
@@ -92,9 +92,7 @@ Market figures are asking prices from personal Xianyu sellers, not completed-sal
 | `references/` | Fact checklist, pricing, copywriting, monitoring specs |
 | `scripts/sample_listings.py` | Adaptive comparable collection with a 24h cache |
 | `scripts/listing_state.py` | Local listing state machine and metric snapshots |
-| `tests/` | Offline unit tests (`python3 -m unittest discover -s tests`) |
-| `assets/` | Case-study images used by the README |
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/Bing-Bryan/skills-by-bing/blob/main/LICENSE)
