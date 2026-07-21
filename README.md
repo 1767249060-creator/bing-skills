@@ -24,17 +24,16 @@ Works with agents supported by [`npx skills`](https://skills.sh), including Clau
 
 | Skill | What it does |
 | --- | --- |
-| [skill-discovery-optimizer](skills/skill-discovery-optimizer/) | Reviews and optimizes a finished Agent Skill for agent-side discovery, routing, trust, and installation. Generates bilingual release materials and can publish to a confirmed GitHub repository. |
-| [xianyu-publish](skills/xianyu-publish/) | A local-first workflow for personal Xianyu sellers: inspect photos, research comparables, protect pricing, write honest copy, publish after confirmation, verify, and track lightly. |
+| [skill-discovery-optimizer](skill-discovery-optimizer/) | Reviews and optimizes a finished Agent Skill for agent-side discovery, routing, trust, and installation. Generates bilingual release materials and can publish to a confirmed GitHub repository. |
+| [xianyu-publish](xianyu-publish/) | A local-first workflow for personal Xianyu sellers: inspect photos, research comparables, protect pricing, write honest copy, publish after confirmation, verify, and track lightly. |
 
 ## Repository structure
 
 ```text
 skills-by-bing/
-└── skills/
-    └── <skill-name>/
-        ├── SKILL.md
-        └── optional resources
+└── <skill-name>/
+    ├── SKILL.md
+    └── optional resources
 ```
 
 The repository index and release documentation are maintained in English and Simplified Chinese.
