@@ -63,7 +63,7 @@ Before drafting new copy or making a substantive change to title, positioning, p
 - Optimize photos only by selection, order, crop, straightening, and mild exposure/white-balance correction. Never hide wear or synthesize product facts.
 - Do not read buyer chat content by default. A user-reported inquiry—or optional metadata-only detection—starts a 48-hour negotiation hold; if the item remains active afterward, resume operation.
 - After publication, monitor only user-owned listings by default; do not keep polling research comparables.
-- Use one combined monitoring session per state directory. Run status checks and daily digests in that session, include all active items, and update it in place instead of creating duplicates.
+- Use one combined monitoring session per state directory. Run status checks and the daily digest together at 09:00 local time, include all active items, and update it in place instead of creating duplicates. Do not add a higher-frequency patrol unless the user explicitly requests one.
 
 ## Safety and recovery
 

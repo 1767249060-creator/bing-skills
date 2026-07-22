@@ -19,16 +19,18 @@ Do not monitor private chat content, platform impressions, CTR, recommendation s
 
 When the user requests monitoring, create exactly one recurring automation/task/session per state directory. Do not create separate daily-digest and status-check tasks, and do not create one task per item.
 
-Use one six-hour schedule. On every run:
+Use one daily schedule at 09:00 in the user's local timezone. On every run:
 
 1. Poll the status of all monitorable user-owned items.
-2. Report immediately only when an item becomes sold, paused, deleted, or unreadable.
-3. On the first run at or after the user's preferred daily-report time, also produce one combined daily digest and run `purge`.
-4. Persist `last_digest_date` in private local monitor metadata under the state directory so later runs that day remain silent.
+2. Produce one combined daily digest covering status, price, views, wants, collections, and diagnosis checkpoints.
+3. Run `purge`.
+4. Highlight sold, paused, deleted, or unreadable states in the same report.
+
+Do not create a separate or higher-frequency status patrol unless the user explicitly asks for one.
 
 Give the task a stable identity derived from the absolute state-directory path, for example `xianyu-monitor:<state-dir>`. Before creating it, inspect existing automations and update the matching task in place. Never create a duplicate because the visible task name differs. For legacy duplicates, keep one combined task and remove the others only with the user's authorization.
 
-Use OpenCLI structured reads. Use browser DOM only for a missing field or failed adapter. Stop on verification or risk control; do not repeatedly retry. Disable the combined task only when no item in its state directory remains monitorable.
+Use OpenCLI structured reads. Use browser DOM only for a missing field or failed adapter. Stop on verification or risk control; do not repeatedly retry. Disable the daily task only when no item in its state directory remains monitorable.
 
 ## State machine
 
